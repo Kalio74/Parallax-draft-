@@ -1,0 +1,138 @@
+ /*ЗАдаем значение разметки*/
+ *{
+    margin: 0%;
+    padding: 0%;
+    box-sizing: border-box;
+ }
+
+ :root {
+   --index: calc(1vw + 1vh)
+
+ }
+
+ /*Подключаем шрифты (fonts)*/
+  /*1 шрифт*/
+ @font-face {
+    font-family: font_k ;
+    src: url(../fonts/raleway-black.woff2);
+ }
+
+  /*2 шрифт*/
+  @font-face {
+    font-family: font_k ;
+    src: url(../fonts/raleway-regular.woff2);
+    font-weight: 900;
+ }
+
+ /*Значения цвета_фона\\цвета_текста\\стиль шрифта\\меж_стр_итервал*/
+ body {
+    background-color: black;
+    font-family: font_k, sans-serif;
+    line-height: 1.5;
+ }
+/* Шапка сайта */
+ .main__hed {
+    position: relative;
+ }
+
+ /* Пвсевдо элемент */
+.main__hed::after {
+   content: '';
+   position: absolute;
+   z-index: 50;
+   width: 110%;
+   height: calc(var(--index)*10);
+   background-image: url(..//img/ground.png);
+   background-size: cover;
+   background-repeat: no-repeat;
+   background-position: center;
+   bottom: calc(var(--index)*-4.5);
+}
+
+/* Верстка текста */
+ .layers {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    overflow: hidden;
+    position: relative;
+ }
+/* Верстка слоев */
+ .layer {
+    height: 100%;
+    width: 100%;
+    position: absolute;
+    background-size: cover;
+    background-position: center;
+    will-change:scroll-position;  /*Уделение аппаратного внимания для Scroll(фризы)*/
+    z-index: 2; /* Задаем место для текста */
+
+}
+
+/* Scroll на 1 слой */
+.layers__t {
+   transform: translate3d(0, calc(var(--scrollTop)/1.9), 0);
+   z-index: 0; /* Переносим слой за текст */
+}
+
+/* Scroll на 2 слой */
+.layers__m {
+   transform: translate3d(0, calc(var(--scrollTop)/2.9), 0);
+}
+
+/* Scroll на 3 слой */
+.layers__b {
+   transform: translate3d(0, calc(var(--scrollTop)/6.1), 0);
+}
+
+/* Верстка текста (hed)*/
+.layer__text {
+   z-index: 1;
+   transform: translate3d(0, calc(var(--scrollTop)/2), 0);
+   will-change: scroll-position;
+   text-transform: uppercase;
+   font-weight: 900;
+   margin-bottom: 100px;
+   color: #eae6c9;
+   text-shadow: 0 0 15px #b19954;
+}
+
+/* Динамичноть нижней строки*/
+.layers__bot {
+   font-size: calc(var(--index) *2);
+   font-weight: 900px;
+   letter-spacing: calc(var(--index)/34);
+}
+
+/* Динамичность вверхей строки */
+.layers__top {
+   font-size: calc(var(--index) *1.5);
+   font-weight: 900;
+}
+
+/* Верстка нижего блока*/
+.main-body {
+   min-height:100vh ;
+   background-size: cover;
+   background-position: center;
+   color: #eae6c9;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   position: relative;
+}
+
+.main-body__con {
+   text-transform: uppercase;
+   font-size: calc(var(--index)*1.55);
+   letter-spacing: calc(var(--index)/8);
+}
+
+.copyr {
+   position: absolute;
+   bottom: calc(var(--index)*2);
+   font-size: calc(var(--index)*.58);
+   letter-spacing: calc(var(--index)/38);
+}
